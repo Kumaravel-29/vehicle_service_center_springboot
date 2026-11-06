@@ -1,0 +1,3 @@
+package com.example.vehicleservice.service;
+import com.example.vehicleservice.entity.Mechanic; import com.example.vehicleservice.dto.MechanicRequest; import com.example.vehicleservice.repository.MechanicRepository; import org.springframework.stereotype.Service;
+@Service public class MechanicService {private final MechanicRepository repo; public MechanicService(MechanicRepository r){repo=r;} public Mechanic create(MechanicRequest d){Mechanic m=new Mechanic();m.setName(d.name());m.setSpecialization(d.specialization());return repo.save(m);} public java.util.List<Mechanic> available(){return repo.findByAvailableTrue();}}

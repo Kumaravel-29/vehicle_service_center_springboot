@@ -1,0 +1,3 @@
+package com.example.vehicleservice.controller;
+import com.example.vehicleservice.dto.PartRequest; import com.example.vehicleservice.service.PartService; import jakarta.validation.Valid; import org.springframework.http.*; import org.springframework.web.bind.annotation.*;
+@RestController @RequestMapping("/api/parts") public class PartController {private final PartService service;public PartController(PartService s){service=s;} @PostMapping public ResponseEntity<?> create(@Valid @RequestBody PartRequest d){return ResponseEntity.status(HttpStatus.CREATED).body(service.create(d));} @GetMapping("/available") public java.util.List<?> available(){return service.available();}}

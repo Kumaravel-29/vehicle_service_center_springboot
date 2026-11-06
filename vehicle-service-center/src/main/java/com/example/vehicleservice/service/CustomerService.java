@@ -1,0 +1,3 @@
+package com.example.vehicleservice.service;
+import com.example.vehicleservice.entity.Customer; import com.example.vehicleservice.dto.CustomerRequest; import com.example.vehicleservice.repository.CustomerRepository; import org.springframework.stereotype.Service;
+@Service public class CustomerService {private final CustomerRepository repo; public CustomerService(CustomerRepository r){repo=r;} public Customer create(CustomerRequest d){Customer c=new Customer();c.setName(d.name());c.setEmail(d.email());c.setPhone(d.phone());return repo.save(c);} public java.util.List<Customer> all(){return repo.findAll();}}

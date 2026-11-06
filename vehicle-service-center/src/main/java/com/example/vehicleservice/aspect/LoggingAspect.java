@@ -1,0 +1,3 @@
+package com.example.vehicleservice.aspect;
+import org.aspectj.lang.ProceedingJoinPoint; import org.aspectj.lang.annotation.*; import org.springframework.stereotype.Component; import org.slf4j.Logger; import org.slf4j.LoggerFactory;
+@Aspect @Component public class LoggingAspect {private static final Logger log=LoggerFactory.getLogger(LoggingAspect.class); @Around("execution(* com.example.vehicleservice.service..*(..))") public Object logExecution(ProceedingJoinPoint p)throws Throwable{long start=System.currentTimeMillis();try{return p.proceed();}finally{log.info("{} completed in {} ms",p.getSignature().toShortString(),System.currentTimeMillis()-start);}}}

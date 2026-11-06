@@ -1,0 +1,3 @@
+package com.example.vehicleservice.controller;
+import com.example.vehicleservice.dto.VehicleRequest; import com.example.vehicleservice.service.VehicleService; import jakarta.validation.Valid; import org.springframework.http.*; import org.springframework.web.bind.annotation.*;
+@RestController @RequestMapping("/api/vehicles") public class VehicleController {private final VehicleService service;public VehicleController(VehicleService s){service=s;} @PostMapping public ResponseEntity<?> create(@Valid @RequestBody VehicleRequest d){return ResponseEntity.status(HttpStatus.CREATED).body(service.create(d));} @GetMapping public java.util.List<?> all(){return service.all();}}
